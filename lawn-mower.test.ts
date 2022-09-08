@@ -6,7 +6,7 @@ function createLawnMower(arg0: number,arg1: number,arg2: string) {
 }
 
 describe('lawn mower', () => {
-    it('works', () => {
+    it('can compare lawnmowers', () => {
         const lawnMower = createLawnMower(0, 0, 'N')
 
         expect(lawnMower).toEqual(createLawnMower(0, 0, 'N'))
