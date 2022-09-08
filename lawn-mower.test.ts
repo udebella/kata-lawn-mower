@@ -5,7 +5,7 @@ class LawnMower {
     constructor(private x: number, private y: number, private direction: 'N') {}
 
     move() {
-        return new LawnMower(0, 1, "N")
+        return new LawnMower(0, this.y+1, "N")
     }
 }
 
@@ -27,5 +27,14 @@ describe('lawn mower', () => {
 
         expect(moved).toEqual(new LawnMower(0, 1, 'N'))
     })
+
+    it('can move 2', () => {
+        const lawnMower = new LawnMower(0, 1, 'N')
+
+        const moved = lawnMower.move()
+
+        expect(moved).toEqual(new LawnMower(0, 2, 'N'))
+    })
+
 })
 
