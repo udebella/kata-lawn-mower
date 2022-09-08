@@ -3,6 +3,10 @@ import { expect } from 'https://deno.land/x/expect@v0.2.10/mod.ts'
 
 class LawnMower {
     constructor(private x: number, private y: number, private direction: 'N') {}
+
+    move() {
+        return new LawnMower(0, 1, "N")
+    }
 }
 
 describe('lawn mower', () => {
@@ -15,6 +19,13 @@ describe('lawn mower', () => {
         const lawnMower = new LawnMower(1, 0, 'N')
 
         expect(lawnMower).not.toEqual(new LawnMower(0, 0, 'N'))
+    })
+    it('can move', () => {
+        const lawnMower = new LawnMower(0, 0, 'N')
+
+        const moved = lawnMower.move()
+
+        expect(moved).toEqual(new LawnMower(0, 1, 'N'))
     })
 })
 
