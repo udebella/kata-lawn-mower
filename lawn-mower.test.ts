@@ -24,7 +24,7 @@ describe('lawn mower', () => {
         expect(lawnMower).toEqual(new LawnMower(0, 0, new Position(0, 0), 'N'))
     })
     it('two mower in different spots should be different', () => {
-        const lawnMower = new LawnMower(1, 0, new Position(0, 0), 'N')
+        const lawnMower = new LawnMower(1, 0, new Position(1, 0), 'N')
 
         expect(lawnMower).not.toEqual(new LawnMower(0, 0, new Position(0, 0), 'N'))
     })
