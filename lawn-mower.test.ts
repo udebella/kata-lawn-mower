@@ -25,6 +25,10 @@ function north({y}: Position) : Position {
     return new Position(0, y + 1);
 }
 
+function newLawnMower(position: Position, direction: Direction) : LawnMowerType {
+    return new LawnMower(position, direction);
+}
+
 describe('lawn mower', () => {
     it('can compare lawnmowers', () => {
         const lawnMower = new LawnMower(new Position(0, 0), north)
@@ -51,7 +55,7 @@ describe('lawn mower', () => {
 
         const moved = move(lawnMower)
 
-        expect(moved).toEqual(new LawnMower(new Position(0, 0), south))
+        expect(moved).toEqual(newLawnMower(new Position(0, 0), south))
     })
 
 })
