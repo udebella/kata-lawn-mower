@@ -6,7 +6,7 @@ class Position {
     }
 }
 
-type Direction = typeof north | typeof south | typeof east
+type Direction = (position: Position) => Position;
 type LawnMowerType = { position: Position, direction: Direction };
 
 function move(lawnMower: LawnMowerType) {
@@ -27,6 +27,10 @@ function east({x, y}: Position) {
 
 function newLawnMower(position: Position, direction: Direction): LawnMowerType {
     return {position, direction};
+}
+
+function west({x, y}: Position): Position {
+    return new Position(x - 1, y)
 }
 
 describe('lawn mower', () => {
@@ -66,5 +70,12 @@ describe('lawn mower', () => {
         expect(moved).toEqual(newLawnMower(new Position(1, 0), east))
     })
 
+    it('can move west', () => {
+        const lawnMower = newLawnMower(new Position(0, 0), west)
+
+        const moved = move(lawnMower)
+
+        expect(moved).toEqual(newLawnMower(new Position(-1, 0), west))
+    })
 })
 
