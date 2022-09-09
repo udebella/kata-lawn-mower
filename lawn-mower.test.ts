@@ -36,7 +36,13 @@ function newLawnMower(position: Position, direction: Direction): LawnMowerType {
   return { position, direction };
 }
 
+const orderedDirection = [north, west, south, east]
+
 function turnLeft(lawnMower: LawnMowerType): LawnMowerType {
+    let index = orderedDirection.indexOf(lawnMower.direction);
+
+    return {...lawnMower, direction:orderedDirection[(index+1)%orderedDirection.length]}
+/*
     if (lawnMower.direction == east) {
         return { ...lawnMower, direction: north };
     }
@@ -47,6 +53,7 @@ function turnLeft(lawnMower: LawnMowerType): LawnMowerType {
     return { ...lawnMower, direction: south };
   }
   return { ...lawnMower, direction: west };
+*/
 }
 
 describe("lawn mower", () => {
