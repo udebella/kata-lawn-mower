@@ -9,10 +9,10 @@ class Position {
 type Direction = (position: Position) => Position;
 type LawnMowerType = { position: Position; direction: Direction };
 
-function move(lawnMower: LawnMowerType) {
+function move({direction, position}: LawnMowerType) {
   return newLawnMower(
-    lawnMower.direction(lawnMower.position),
-    lawnMower.direction,
+    direction(position),
+    direction,
   );
 }
 
