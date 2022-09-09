@@ -74,10 +74,10 @@ describe("lawn mower", () => {
   });
 
   it("can move west", () => {
-    const lawnMower = newLawnMower(new Position(0, 0), west);
+    const lawnMower = newLawnMower(new Position(2, 0), west);
 
     const moved = move(lawnMower);
 
-    expect(moved).toEqual(newLawnMower(new Position(-1, 0), west));
+    expect(moved).toEqual(newLawnMower(new Position(1, 0), west));
   });
 });
