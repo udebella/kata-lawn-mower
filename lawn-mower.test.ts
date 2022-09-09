@@ -13,7 +13,7 @@ class LawnMower {
     }
 }
 
-function move(lawnMower: LawnMower | LawnMowerType) {
+function move(lawnMower: LawnMowerType) {
     return new LawnMower(lawnMower.direction(lawnMower.position), lawnMower.direction)
 }
 
