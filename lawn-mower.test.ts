@@ -47,7 +47,7 @@ function turnLeft(lawnMower: LawnMower): LawnMower {
 function turnRight(lawnMower: LawnMower) {
   const reversed = [...orderedDirection].reverse();
   const index = reversed.indexOf(lawnMower.direction);
-    const indexNewDirection = (orderedDirection.length + index + 1) % orderedDirection.length;
+    const indexNewDirection = (index + 1) % orderedDirection.length;
     return {...lawnMower, direction:reversed[indexNewDirection]}
 }
 
