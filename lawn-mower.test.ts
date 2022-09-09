@@ -38,17 +38,19 @@ function newLawnMower(position: Position, direction: Direction): LawnMower {
 
 const orderedDirection = [north, west, south, east]
 
+function turn(lawnMower: LawnMower, direction: any[]) {
+  const index = direction.indexOf(lawnMower.direction);
+  const indexNewDirection = (index + 1) % direction.length;
+  return {...lawnMower, direction: direction[indexNewDirection]}
+}
+
 function turnLeft(lawnMower: LawnMower): LawnMower {
-    const index = orderedDirection.indexOf(lawnMower.direction);
-    const indexNewDirection = (index + 1) % orderedDirection.length;
-    return {...lawnMower, direction:orderedDirection[indexNewDirection]}
+  return turn(lawnMower, orderedDirection);
 }
 
 function turnRight(lawnMower: LawnMower) {
   const reversed = [...orderedDirection].reverse();
-  const index = reversed.indexOf(lawnMower.direction);
-    const indexNewDirection = (index + 1) % orderedDirection.length;
-    return {...lawnMower, direction:reversed[indexNewDirection]}
+  return turn(lawnMower, reversed);
 }
 
 describe("lawn mower", () => {
