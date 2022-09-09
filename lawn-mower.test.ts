@@ -1,6 +1,10 @@
 import { describe, it } from 'https://deno.land/std@0.154.0/testing/bdd.ts'
 import { expect } from 'https://deno.land/x/expect@v0.2.10/mod.ts'
 
+class Position {
+    constructor(private x: number, private y:number) {}
+}
+
 class LawnMower {
     constructor(private x: number, private y: number, private direction: 'N' | 'S') {
     }
