@@ -7,9 +7,9 @@ class Position {
 }
 
 type Direction = (position: Position) => Position;
-type LawnMowerType = { position: Position; direction: Direction };
+type LawnMower = { position: Position; direction: Direction };
 
-function move({ direction, position }: LawnMowerType) {
+function move({ direction, position }: LawnMower) {
   return newLawnMower(
     direction(position),
     direction,
@@ -32,19 +32,19 @@ function west({ x, y }: Position): Position {
   return new Position(x - 1, y);
 }
 
-function newLawnMower(position: Position, direction: Direction): LawnMowerType {
+function newLawnMower(position: Position, direction: Direction): LawnMower {
   return { position, direction };
 }
 
 const orderedDirection = [north, west, south, east]
 
-function turnLeft(lawnMower: LawnMowerType): LawnMowerType {
+function turnLeft(lawnMower: LawnMower): LawnMower {
     const index = orderedDirection.indexOf(lawnMower.direction);
     const indexNewDirection = (index + 1) % orderedDirection.length;
     return {...lawnMower, direction:orderedDirection[indexNewDirection]}
 }
 
-function turnRight(lawnMower: LawnMowerType) {
+function turnRight(lawnMower: LawnMower) {
     const index = orderedDirection.indexOf(lawnMower.direction);
     const indexNewDirection = (orderedDirection.length + index - 1) % orderedDirection.length;
     return {...lawnMower, direction:orderedDirection[indexNewDirection]}
