@@ -17,8 +17,8 @@ function south({y}: Position) {
     return new Position(0, y - 1);
 }
 
-function north({y}: Position): Position {
-    return new Position(0, y + 1);
+function north({x, y}: Position): Position {
+    return new Position(x, y + 1);
 }
 
 function east({x}: Position) {
@@ -43,11 +43,11 @@ describe('lawn mower', () => {
     })
 
     it('can move north', () => {
-        const lawnMower = newLawnMower(new Position(0, 0), north)
+        const lawnMower = newLawnMower(new Position(1, 0), north)
 
         const moved = move(lawnMower)
 
-        expect(moved).toEqual(newLawnMower(new Position(0, 1), north))
+        expect(moved).toEqual(newLawnMower(new Position(1, 1), north))
     })
 
     it('can move south', () => {
