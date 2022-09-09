@@ -11,7 +11,7 @@ class LawnMower {
 
     move() {
         if (this.direction === 'S') {
-            return new LawnMower(0, this.y - 1, new Position(0, 0), "S")
+            return new LawnMower(0, this.y - 1, new Position(0, this.position.y - 1), "S")
         }
         return new LawnMower(0, this.y + 1, new Position(0, 0), "N")
     }
@@ -45,7 +45,7 @@ describe('lawn mower', () => {
     })
 
     it('can move south', () => {
-        const lawnMower = new LawnMower(0, 1, new Position(0, 0), 'S')
+        const lawnMower = new LawnMower(0, 1, new Position(0, 1), 'S')
 
         const moved = lawnMower.move()
 
@@ -53,11 +53,11 @@ describe('lawn mower', () => {
     })
 
     it('can move south 2', () => {
-        const lawnMower = new LawnMower(0, 2, new Position(0, 0), 'S')
+        const lawnMower = new LawnMower(0, 2, new Position(0, 2), 'S')
 
         const moved = lawnMower.move()
 
-        expect(moved).toEqual(new LawnMower(0, 1, new Position(0, 0), 'S'))
+        expect(moved).toEqual(new LawnMower(0, 1, new Position(0, 1), 'S'))
     })
 
 })
