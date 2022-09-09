@@ -22,7 +22,7 @@ function south(position: Position) {
 }
 
 function north(position: Position) : Position {
-    return new Position(position.x, position.y + 1);
+    return new Position(0, position.y + 1);
 }
 
 describe('lawn mower', () => {
