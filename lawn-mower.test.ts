@@ -10,10 +10,6 @@ type Direction = typeof north | typeof south
 class LawnMower {
     constructor(public position: Position, public direction: Direction) {
     }
-
-    move() {
-        return move(this);
-    }
 }
 
 function move(lawnMower: LawnMower) {
@@ -44,7 +40,7 @@ describe('lawn mower', () => {
     it('can move north', () => {
         const lawnMower = new LawnMower(new Position(0, 0), north)
 
-        const moved = lawnMower.move()
+        const moved = move(lawnMower)
 
         expect(moved).toEqual(new LawnMower(new Position(0, 1), north))
     })
@@ -52,7 +48,7 @@ describe('lawn mower', () => {
     it('can move south', () => {
         const lawnMower = new LawnMower(new Position(0, 1), south)
 
-        const moved = lawnMower.move()
+        const moved = move(lawnMower)
 
         expect(moved).toEqual(new LawnMower(new Position(0, 0), south))
     })
