@@ -26,7 +26,7 @@ function north({y}: Position) : Position {
 }
 
 function newLawnMower(position: Position, direction: Direction) : LawnMowerType {
-    return new LawnMower(position, direction);
+    return {position, direction};
 }
 
 describe('lawn mower', () => {
