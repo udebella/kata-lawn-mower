@@ -28,12 +28,12 @@ function east({ x, y }: Position) {
   return new Position(x + 1, y);
 }
 
-function newLawnMower(position: Position, direction: Direction): LawnMowerType {
-  return { position, direction };
+function west({ x, y }: Position): Position {
+    return new Position(x - 1, y);
 }
 
-function west({ x, y }: Position): Position {
-  return new Position(x - 1, y);
+function newLawnMower(position: Position, direction: Direction): LawnMowerType {
+  return { position, direction };
 }
 
 describe("lawn mower", () => {
