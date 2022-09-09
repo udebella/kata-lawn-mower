@@ -12,7 +12,7 @@ class LawnMower {
     }
 
     move() {
-        return new LawnMower(this.direction(this.position), this.direction)
+        return move(this);
     }
 }
 
