@@ -36,14 +36,6 @@ describe('lawn mower', () => {
         expect(moved).toEqual(new LawnMower(new Position(0, 1), 'N'))
     })
 
-    it('can move 2', () => {
-        const lawnMower = new LawnMower(new Position(0, 1), 'N')
-
-        const moved = lawnMower.move()
-
-        expect(moved).toEqual(new LawnMower(new Position(0, 2), 'N'))
-    })
-
     it('can move south', () => {
         const lawnMower = new LawnMower(new Position(0, 1), 'S')
 
