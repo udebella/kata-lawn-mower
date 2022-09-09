@@ -37,7 +37,10 @@ function newLawnMower(position: Position, direction: Direction): LawnMowerType {
 }
 
 function turnLeft(lawnMower: LawnMowerType): LawnMowerType {
-    return {...lawnMower, direction: west}
+    if (lawnMower.direction == west) {
+        return {...lawnMower, direction: south}
+    }
+    return {...lawnMower, direction: west};
 }
 
 describe("lawn mower", () => {
@@ -91,6 +94,14 @@ describe("lawn mower", () => {
         const turned = turnLeft(lawnMower);
 
         expect(turned).toEqual(newLawnMower(new Position(0, 0), west));
+    });
+
+    it('can turn left twice', () => {
+        const lawnMower = newLawnMower(new Position(0, 0), north);
+
+        const turned = turnLeft(turnLeft(lawnMower));
+
+        expect(turned).toEqual(newLawnMower(new Position(0, 0), south));
     });
 
 });
