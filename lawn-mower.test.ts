@@ -9,7 +9,7 @@ class Position {
 type Direction = (position: Position) => Position;
 type LawnMowerType = { position: Position; direction: Direction };
 
-function move({direction, position}: LawnMowerType) {
+function move({ direction, position }: LawnMowerType) {
   return newLawnMower(
     direction(position),
     direction,
@@ -29,7 +29,7 @@ function east({ x, y }: Position) {
 }
 
 function west({ x, y }: Position): Position {
-    return new Position(x - 1, y);
+  return new Position(x - 1, y);
 }
 
 function newLawnMower(position: Position, direction: Direction): LawnMowerType {
@@ -37,10 +37,13 @@ function newLawnMower(position: Position, direction: Direction): LawnMowerType {
 }
 
 function turnLeft(lawnMower: LawnMowerType): LawnMowerType {
-    if (lawnMower.direction == west) {
-        return {...lawnMower, direction: south}
-    }
-    return {...lawnMower, direction: west};
+  if (lawnMower.direction == south) {
+    return { ...lawnMower, direction: east };
+  }
+  if (lawnMower.direction == west) {
+    return { ...lawnMower, direction: south };
+  }
+  return { ...lawnMower, direction: west };
 }
 
 describe("lawn mower", () => {
@@ -88,20 +91,27 @@ describe("lawn mower", () => {
     expect(moved).toEqual(newLawnMower(new Position(1, 0), west));
   });
 
-    it('can turn left', () => {
-        const lawnMower = newLawnMower(new Position(0, 0), north);
+  it("can turn left", () => {
+    const lawnMower = newLawnMower(new Position(0, 0), north);
 
-        const turned = turnLeft(lawnMower);
+    const turned = turnLeft(lawnMower);
 
-        expect(turned).toEqual(newLawnMower(new Position(0, 0), west));
-    });
+    expect(turned).toEqual(newLawnMower(new Position(0, 0), west));
+  });
 
-    it('can turn left twice', () => {
-        const lawnMower = newLawnMower(new Position(0, 0), north);
+  it("can turn left twice", () => {
+    const lawnMower = newLawnMower(new Position(0, 0), north);
 
-        const turned = turnLeft(turnLeft(lawnMower));
+    const turned = turnLeft(turnLeft(lawnMower));
 
-        expect(turned).toEqual(newLawnMower(new Position(0, 0), south));
-    });
+    expect(turned).toEqual(newLawnMower(new Position(0, 0), south));
+  });
 
+  it("can turn left thrice", () => {
+    const lawnMower = newLawnMower(new Position(0, 0), north);
+
+    const turned = turnLeft(turnLeft(turnLeft(lawnMower)));
+
+    expect(turned).toEqual(newLawnMower(new Position(0, 0), east));
+  });
 });
