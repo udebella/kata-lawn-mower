@@ -6,7 +6,7 @@ class Position {
 }
 
 class LawnMower {
-    constructor(private position: Position, private direction: "N" | "S" | typeof north) {
+    constructor(private position: Position, private direction: "S" | typeof north) {
     }
 
     move() {
