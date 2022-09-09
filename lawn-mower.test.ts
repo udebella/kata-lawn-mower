@@ -6,58 +6,58 @@ class Position {
 }
 
 class LawnMower {
-    constructor(private x: number, private y: number, private direction: 'N' | 'S') {
+    constructor(private x: number, private y: number, private position: Position = new Position(0, 0), private direction: "N" | "S") {
     }
 
     move() {
         if (this.direction === 'S') {
-            return new LawnMower(0, this.y - 1, "S")
+            return new LawnMower(0, this.y - 1, new Position(0, 0), "S")
         }
-        return new LawnMower(0, this.y + 1, "N")
+        return new LawnMower(0, this.y + 1, new Position(0, 0), "N")
     }
 }
 
 describe('lawn mower', () => {
     it('can compare lawnmowers', () => {
-        const lawnMower = new LawnMower(0, 0, 'N')
+        const lawnMower = new LawnMower(0, 0, new Position(0, 0), 'N')
 
-        expect(lawnMower).toEqual(new LawnMower(0, 0, 'N'))
+        expect(lawnMower).toEqual(new LawnMower(0, 0, new Position(0, 0), 'N'))
     })
     it('two mower in different spots should be different', () => {
-        const lawnMower = new LawnMower(1, 0, 'N')
+        const lawnMower = new LawnMower(1, 0, new Position(0, 0), 'N')
 
-        expect(lawnMower).not.toEqual(new LawnMower(0, 0, 'N'))
+        expect(lawnMower).not.toEqual(new LawnMower(0, 0, new Position(0, 0), 'N'))
     })
     it('can move', () => {
-        const lawnMower = new LawnMower(0, 0, 'N')
+        const lawnMower = new LawnMower(0, 0, new Position(0, 0), 'N')
 
         const moved = lawnMower.move()
 
-        expect(moved).toEqual(new LawnMower(0, 1, 'N'))
+        expect(moved).toEqual(new LawnMower(0, 1, new Position(0, 0), 'N'))
     })
 
     it('can move 2', () => {
-        const lawnMower = new LawnMower(0, 1, 'N')
+        const lawnMower = new LawnMower(0, 1, new Position(0, 0), 'N')
 
         const moved = lawnMower.move()
 
-        expect(moved).toEqual(new LawnMower(0, 2, 'N'))
+        expect(moved).toEqual(new LawnMower(0, 2, new Position(0, 0), 'N'))
     })
 
     it('can move south', () => {
-        const lawnMower = new LawnMower(0, 1, 'S')
+        const lawnMower = new LawnMower(0, 1, new Position(0, 0), 'S')
 
         const moved = lawnMower.move()
 
-        expect(moved).toEqual(new LawnMower(0, 0, 'S'))
+        expect(moved).toEqual(new LawnMower(0, 0, new Position(0, 0), 'S'))
     })
 
     it('can move south 2', () => {
-        const lawnMower = new LawnMower(0, 2, 'S')
+        const lawnMower = new LawnMower(0, 2, new Position(0, 0), 'S')
 
         const moved = lawnMower.move()
 
-        expect(moved).toEqual(new LawnMower(0, 1, 'S'))
+        expect(moved).toEqual(new LawnMower(0, 1, new Position(0, 0), 'S'))
     })
 
 })
