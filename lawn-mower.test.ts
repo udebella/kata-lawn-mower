@@ -17,12 +17,12 @@ class LawnMower {
     }
 }
 
-function south(position: Position) {
-    return new Position(0, position.y - 1);
+function south({y}: Position) {
+    return new Position(0, y - 1);
 }
 
-function north(position: Position) : Position {
-    return new Position(0, position.y + 1);
+function north({y}: Position) : Position {
+    return new Position(0, y + 1);
 }
 
 describe('lawn mower', () => {
