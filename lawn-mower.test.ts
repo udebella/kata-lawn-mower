@@ -5,8 +5,10 @@ class Position {
     constructor(public x: number, public y:number) {}
 }
 
+type Direction = typeof north | typeof south
+
 class LawnMower {
-    constructor(private position: Position, private direction: typeof north | typeof south) {
+    constructor(private position: Position, private direction: Direction) {
     }
 
     move() {
