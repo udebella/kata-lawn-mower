@@ -38,7 +38,7 @@ function newLawnMower(position: Position, direction: Direction): LawnMower {
 
 const orderedDirection = [north, west, south, east]
 
-function turn(lawnMower: LawnMower, direction: typeof orderedDirection) {
+function turn(lawnMower: LawnMower, direction: Direction[]) {
   const index = direction.indexOf(lawnMower.direction);
   const indexNewDirection = (index + 1) % direction.length;
   return {...lawnMower, direction: direction[indexNewDirection]}
