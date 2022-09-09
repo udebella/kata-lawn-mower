@@ -6,12 +6,12 @@ class Position {
 }
 
 class LawnMower {
-    constructor(private position: Position, private direction: "S" | typeof north) {
+    constructor(private position: Position, private direction: "S" | typeof north | typeof south) {
     }
 
     move() {
-        if (this.direction === 'S') {
-            return new LawnMower(south(this.position), "S")
+        if (this.direction === south) {
+            return new LawnMower(south(this.position), south)
         }
         return new LawnMower(north(this.position), north)
     }
@@ -47,11 +47,11 @@ describe('lawn mower', () => {
     })
 
     it('can move south', () => {
-        const lawnMower = new LawnMower(new Position(0, 1), 'S')
+        const lawnMower = new LawnMower(new Position(0, 1), south)
 
         const moved = lawnMower.move()
 
-        expect(moved).toEqual(new LawnMower(new Position(0, 0), 'S'))
+        expect(moved).toEqual(new LawnMower(new Position(0, 0), south))
     })
 
 })
