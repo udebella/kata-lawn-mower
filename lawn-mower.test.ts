@@ -45,9 +45,9 @@ function turnLeft(lawnMower: LawnMower): LawnMower {
 }
 
 function turnRight(lawnMower: LawnMower) {
-    const index = orderedDirection.indexOf(lawnMower.direction);
-    const indexNewDirection = (orderedDirection.length + index - 1) % orderedDirection.length;
-    return {...lawnMower, direction:orderedDirection[indexNewDirection]}
+    const index = [...orderedDirection].reverse().indexOf(lawnMower.direction);
+    const indexNewDirection = (orderedDirection.length + index + 1) % orderedDirection.length;
+    return {...lawnMower, direction:[...orderedDirection].reverse()[indexNewDirection]}
 }
 
 describe("lawn mower", () => {
