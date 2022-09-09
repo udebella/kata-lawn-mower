@@ -14,7 +14,7 @@ class LawnMower {
 }
 
 function move(lawnMower: LawnMowerType) {
-    return new LawnMower(lawnMower.direction(lawnMower.position), lawnMower.direction)
+    return newLawnMower(lawnMower.direction(lawnMower.position), lawnMower.direction)
 }
 
 function south({y}: Position) {
@@ -31,27 +31,27 @@ function newLawnMower(position: Position, direction: Direction) : LawnMowerType 
 
 describe('lawn mower', () => {
     it('can compare lawnmowers', () => {
-        const lawnMower = new LawnMower(new Position(0, 0), north)
+        const lawnMower = newLawnMower(new Position(0, 0), north)
 
-        expect(lawnMower).toEqual(new LawnMower(new Position(0, 0), north))
+        expect(lawnMower).toEqual(newLawnMower(new Position(0, 0), north))
     })
 
     it('two mower in different spots should be different', () => {
-        const lawnMower = new LawnMower(new Position(1, 0), north)
+        const lawnMower = newLawnMower(new Position(1, 0), north)
 
-        expect(lawnMower).not.toEqual(new LawnMower(new Position(0, 0), north))
+        expect(lawnMower).not.toEqual(newLawnMower(new Position(0, 0), north))
     })
 
     it('can move north', () => {
-        const lawnMower = new LawnMower(new Position(0, 0), north)
+        const lawnMower = newLawnMower(new Position(0, 0), north)
 
         const moved = move(lawnMower)
 
-        expect(moved).toEqual(new LawnMower(new Position(0, 1), north))
+        expect(moved).toEqual(newLawnMower(new Position(0, 1), north))
     })
 
     it('can move south', () => {
-        const lawnMower = new LawnMower(new Position(0, 1), south)
+        const lawnMower = newLawnMower(new Position(0, 1), south)
 
         const moved = move(lawnMower)
 
