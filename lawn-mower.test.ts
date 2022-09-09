@@ -6,7 +6,7 @@ class Position {
 }
 
 class LawnMower {
-    constructor(private position: Position, private direction: "N" | "S") {
+    constructor(private position: Position, private direction: "N" | "S" | typeof north) {
     }
 
     move() {
@@ -27,15 +27,15 @@ function north({y}: Position) : Position {
 
 describe('lawn mower', () => {
     it('can compare lawnmowers', () => {
-        const lawnMower = new LawnMower(new Position(0, 0), 'N')
+        const lawnMower = new LawnMower(new Position(0, 0), north)
 
-        expect(lawnMower).toEqual(new LawnMower(new Position(0, 0), 'N'))
+        expect(lawnMower).toEqual(new LawnMower(new Position(0, 0), north))
     })
 
     it('two mower in different spots should be different', () => {
-        const lawnMower = new LawnMower(new Position(1, 0), 'N')
+        const lawnMower = new LawnMower(new Position(1, 0), north)
 
-        expect(lawnMower).not.toEqual(new LawnMower(new Position(0, 0), 'N'))
+        expect(lawnMower).not.toEqual(new LawnMower(new Position(0, 0), north))
     })
 
     it('can move north', () => {
