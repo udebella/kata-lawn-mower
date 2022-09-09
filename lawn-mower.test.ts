@@ -11,10 +11,14 @@ class LawnMower {
 
     move() {
         if (this.direction === 'S') {
-            return new LawnMower(new Position(0, this.position.y - 1), "S")
+            return new LawnMower(south(this.position), "S")
         }
         return new LawnMower(north(this.position), "N")
     }
+}
+
+function south(position: Position) {
+    return new Position(0, position.y - 1);
 }
 
 function north(position: Position) : Position {
