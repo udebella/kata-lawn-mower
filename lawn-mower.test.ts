@@ -6,13 +6,14 @@ class Position {
 }
 
 type Direction = typeof north | typeof south
+type LawnMowerType = { position: Position, direction: Direction};
 
 class LawnMower {
     constructor(public position: Position, public direction: Direction) {
     }
 }
 
-function move(lawnMower: LawnMower) {
+function move(lawnMower: LawnMower | LawnMowerType) {
     return new LawnMower(lawnMower.direction(lawnMower.position), lawnMower.direction)
 }
 
