@@ -40,7 +40,7 @@ const orderedDirection = [north, west, south, east]
 
 function turnLeft(lawnMower: LawnMower): LawnMower {
     const index = orderedDirection.indexOf(lawnMower.direction);
-    const indexNewDirection = (index + 1) % orderedDirection.length;
+    const indexNewDirection = (orderedDirection.length + index + 1) % orderedDirection.length;
     return {...lawnMower, direction:orderedDirection[indexNewDirection]}
 }
 
