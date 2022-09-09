@@ -2,11 +2,12 @@ import { describe, it } from 'https://deno.land/std@0.154.0/testing/bdd.ts'
 import { expect } from 'https://deno.land/x/expect@v0.2.10/mod.ts'
 
 class Position {
-    constructor(public x: number, public y:number) {}
+    constructor(public x: number, public y: number) {
+    }
 }
 
-type Direction = typeof north | typeof south
-type LawnMowerType = { position: Position, direction: Direction};
+type Direction = typeof north | typeof south | typeof east
+type LawnMowerType = { position: Position, direction: Direction };
 
 function move(lawnMower: LawnMowerType) {
     return newLawnMower(lawnMower.direction(lawnMower.position), lawnMower.direction)
@@ -16,11 +17,15 @@ function south({y}: Position) {
     return new Position(0, y - 1);
 }
 
-function north({y}: Position) : Position {
+function north({y}: Position): Position {
     return new Position(0, y + 1);
 }
 
-function newLawnMower(position: Position, direction: Direction) : LawnMowerType {
+function east({x}: Position) {
+    return new Position(x + 1, 0);
+}
+
+function newLawnMower(position: Position, direction: Direction): LawnMowerType {
     return {position, direction};
 }
 
@@ -51,6 +56,14 @@ describe('lawn mower', () => {
         const moved = move(lawnMower)
 
         expect(moved).toEqual(newLawnMower(new Position(0, 0), south))
+    })
+
+    it('can move east', () => {
+        const lawnMower = newLawnMower(new Position(0, 0), east)
+
+        const moved = move(lawnMower)
+
+        expect(moved).toEqual(newLawnMower(new Position(1, 0), east))
     })
 
 })
