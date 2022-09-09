@@ -13,8 +13,12 @@ class LawnMower {
         if (this.direction === 'S') {
             return new LawnMower(new Position(0, this.position.y - 1), "S")
         }
-        return new LawnMower(new Position(0, this.position.y + 1), "N")
+        return new LawnMower(north(this.position), "N")
     }
+}
+
+function north(position: Position) : Position {
+    return new Position(position.x, position.y + 1);
 }
 
 describe('lawn mower', () => {
