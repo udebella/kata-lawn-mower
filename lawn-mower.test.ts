@@ -13,16 +13,16 @@ function move(lawnMower: LawnMowerType) {
     return newLawnMower(lawnMower.direction(lawnMower.position), lawnMower.direction)
 }
 
-function south({y}: Position) {
-    return new Position(0, y - 1);
+function south({x, y}: Position) {
+    return new Position(x, y - 1);
 }
 
 function north({x, y}: Position): Position {
     return new Position(x, y + 1);
 }
 
-function east({x}: Position) {
-    return new Position(x + 1, 0);
+function east({x, y}: Position) {
+    return new Position(x + 1, y);
 }
 
 function newLawnMower(position: Position, direction: Direction): LawnMowerType {
