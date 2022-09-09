@@ -44,6 +44,10 @@ function turnLeft(lawnMower: LawnMowerType): LawnMowerType {
     return {...lawnMower, direction:orderedDirection[indexNewDirection]}
 }
 
+function turnRight(lawnMower: LawnMowerType) {
+    return turnLeft(turnLeft(turnLeft(lawnMower)));
+}
+
 describe("lawn mower", () => {
   it("can compare lawnmowers", () => {
     const lawnMower = newLawnMower(new Position(0, 0), north);
@@ -120,5 +124,13 @@ describe("lawn mower", () => {
         const turned = turnLeft(turnLeft(turnLeft(turnLeft(lawnMower))));
 
         expect(turned).toEqual(newLawnMower(new Position(0, 0), north));
+    });
+
+    it("can turn right", () => {
+        const lawnMower = newLawnMower(new Position(0, 0), north);
+
+        const turned = turnRight(lawnMower);
+
+        expect(turned).toEqual(newLawnMower(new Position(0, 0), east));
     });
 });
